@@ -105,7 +105,6 @@ public class Paciente {
         return peso / (altura * altura);
     }
 
-    //Exercicio 03 semana 02 modulo 02
     // Método para monitorar o paciente
     public String monitoramentoPaciente() {
         return this.toString();

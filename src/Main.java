@@ -89,13 +89,11 @@ public class Main {
 
         System.out.println("\n\nentidades.Paciente cadastrado com sucesso!");
     }
-    //Ex. 8 semana 02 moodulo 02
 
     private static void listarPacientes() {
          GerenciamentoPacientes.listar();
     }
 
-    //Ex. 7 semana 02 moodulo 02
     private static void alterarPaciente() {
         System.out.print("\n\nID do paciente a ser alterado: ");
         int id = scanner.nextInt();
@@ -164,10 +162,6 @@ public class Main {
             System.out.println("\n\nentidades.Paciente não encontrado.");
         }
     }
-
-
-    //Ex. 10 semana 02 moodulo 02
-
     private static void removerPaciente() {
         System.out.print("\n\nID do paciente a ser removido: ");
         int id = scanner.nextInt();
