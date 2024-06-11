@@ -51,6 +51,19 @@ public class Nutricionista extends Funcionario {
         this.tempoExperiencia = tempoExperiencia;
     }
 
+    public void adicionarTempoDeExperiencia(){
+        this.tempoExperiencia += 1;
+        System.out.printf("Tempo experiência adicionado, tempo de experiência = %d", this.tempoExperiencia);
+    }
+
+    public void adicionarCertificacao(String certificacao) {
+        if (certificacao != null && !certificacao.trim().isEmpty()) {
+            this.certificacoes.add(certificacao);
+        } else {
+            throw new IllegalArgumentException("Certificação inválida.");
+        }
+    }
+
     // Método para retornar uma string com as informações do nutricionista
     @Override
     public String toString() {
