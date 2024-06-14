@@ -34,7 +34,6 @@ public class GerenciamentoPacientes {
         pacientes.add(paciente);
     }
 
-    //Ex. 10 semana 02 modulo 02
     public static boolean remover(int id) {
         Paciente paciente = buscarPorId(id);
         if (paciente != null) {
@@ -43,7 +42,6 @@ public class GerenciamentoPacientes {
         }
         return false;
     }
-    //Ex. 7 semana 02 moodulo 02
     public static boolean alterar(int id, double peso, double altura, String pressaoArterial, int frequenciaCardiaca, String dietaAlimentar, List<String> atividadesFisicas) {
         Paciente paciente = buscarPorId(id);
         if (paciente != null) {

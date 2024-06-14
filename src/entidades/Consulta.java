@@ -1,3 +1,5 @@
+package entidades;
+
 import java.time.LocalDateTime;
 
 public class Consulta {
@@ -51,6 +53,6 @@ public class Consulta {
     // Método para retornar uma string com as informações da consulta
     @Override
     public String toString() {
-        return "Consulta: Nutricionista = " + nomeNutricionista + ", Paciente = " + nomePaciente + ", Data e Hora = " + dataHora + ", Consulta Realizada = " + consultaRealizada;
+        return "entidades.Consulta: Nutricionista = " + nomeNutricionista + ", Paciente = " + nomePaciente + ", Data e Hora = " + dataHora + ", entidades.Consulta Realizada = " + consultaRealizada;
     }
 }

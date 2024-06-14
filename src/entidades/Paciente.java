@@ -1,3 +1,5 @@
+package entidades;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -118,7 +120,7 @@ public class Paciente {
     }
     @Override
     public String toString() {
-        return "\n\nPaciente{" +
+        return "\n\nentidades.Paciente{" +
                 "id=" + id +
                 ", nome='" + nome + '\'' +
                 ", idade=" + idade +

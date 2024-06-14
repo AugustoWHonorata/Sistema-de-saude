@@ -1,29 +1,26 @@
 package entidades;
 
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
+import repositorio.GerenciamentoNutricionistas;
 
 public class Nutricionista extends Funcionario {
     private List<String> certificacoes;
     private int numeroConsultas;
     private int tempoExperiencia;
-    private static Set<String> nomesNutricionistas = new HashSet<>();
 
     // Construtors
     public Nutricionista(){ }
-    public Nutricionista(String nome, int idade, Endereco endereco, double salario, List<String> certificacoes, int numeroConsultas, int tempoExperiencia) {
-        super(nome, idade, endereco, salario);
+    public Nutricionista(int id, String nome, int idade, Endereco endereco, double salario, List<String> certificacoes, int numeroConsultas, int tempoExperiencia) {
+        super(id, nome, idade, endereco, salario);
 
-        if (nomesNutricionistas.contains(nome)) {
-            throw new IllegalArgumentException("O nome do nutricionista já existe.");
+        if (GerenciamentoNutricionistas.listarNutricionistas().contains(this)) {
+            throw new IllegalArgumentException("O nutricionista já existe.");
         }
-
         this.certificacoes = certificacoes != null ? new ArrayList<>(certificacoes) : new ArrayList<>();
         this.numeroConsultas = numeroConsultas;
         this.tempoExperiencia = tempoExperiencia;
-        nomesNutricionistas.add(nome);
+        GerenciamentoNutricionistas.adicionarNutricionista(this);
     }
 
     // Getters e Setters
@@ -64,7 +61,6 @@ public class Nutricionista extends Funcionario {
         }
     }
 
-    // Método para retornar uma string com as informações do nutricionista
     @Override
     public String toString() {
         return "Nutricionista: " + getNome() + ", Idade: " + getIdade() + ", Salário: " + getSalario() + ", " + getEndereco().toString()

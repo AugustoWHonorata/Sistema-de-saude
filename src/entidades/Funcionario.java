@@ -1,6 +1,7 @@
 package entidades;
 
 public class Funcionario {
+    private int id;
     private String nome;
     private int idade;
     private Endereco endereco;
@@ -9,7 +10,8 @@ public class Funcionario {
     // Construtors
     public Funcionario(){}
 
-    public Funcionario(String nome, int idade, Endereco endereco, double salario) {
+    public Funcionario(int id, String nome, int idade, Endereco endereco, double salario) {
+        this.id = id;
         this.nome = nome;
         this.idade = idade;
         this.endereco = endereco;
@@ -17,6 +19,13 @@ public class Funcionario {
     }
 
     // Getters e Setters
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
     public String getNome() {
         return nome;
     }

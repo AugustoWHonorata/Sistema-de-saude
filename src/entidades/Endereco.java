@@ -7,7 +7,8 @@ public class Endereco {
     private int numero;
     private String cep;
 
-    // Construtor
+    // Construtors
+    public Endereco(){}
     public Endereco(String logradouro, String estado, String cidade, int numero, String cep) {
         this.logradouro = logradouro;
         this.estado = estado;

@@ -89,7 +89,7 @@ public class Main {
 
         System.out.println("\n\nentidades.Paciente cadastrado com sucesso!");
     }
-
+ 
     private static void listarPacientes() {
          GerenciamentoPacientes.listar();
     }

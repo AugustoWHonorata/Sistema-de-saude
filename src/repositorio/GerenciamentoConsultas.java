@@ -31,7 +31,7 @@ public class GerenciamentoConsultas {
     public static void adicionar(Consulta consulta) {
         consultas.add(consulta);
         // Incrementar o número de consultas do nutricionista
-        Nutricionista nutricionista = Nutricionista.buscarNutricionistaPorNome(consulta.getNomeNutricionista());
+        Nutricionista nutricionista = GerenciamentoNutricionistas.buscarNutricionistaPorNome(consulta.getNomeNutricionista());
         if (nutricionista != null) {
             nutricionista.setNumeroConsultas(nutricionista.getNumeroConsultas() + 1);
         }
