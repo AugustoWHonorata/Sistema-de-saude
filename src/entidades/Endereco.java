@@ -9,12 +9,12 @@ public class Endereco {
 
     // Construtors
     public Endereco(){}
-    public Endereco(String logradouro, String estado, String cidade, int numero, String cep) {
-        this.logradouro = logradouro;
+    public Endereco( String cep, String estado, String cidade, String logradouro, int numero) {
+        this.cep = cep;
         this.estado = estado;
         this.cidade = cidade;
+        this.logradouro = logradouro;
         this.numero = numero;
-        this.cep = cep;
     }
 
     // Getters e Setters
@@ -61,6 +61,10 @@ public class Endereco {
     // Método para retornar uma string com o endereço completo
     @Override
     public String toString() {
-        return "Endereço: " + logradouro + ", " + numero + " - " + cidade + ", " + estado + " - CEP: " + cep;
+        return "Endereço: " + getLogradouro() +
+                ", " + getNumero() +
+                " - " + getCidade() +
+                ", " + getEstado() +
+                " - CEP: " + getCep();
     }
 }

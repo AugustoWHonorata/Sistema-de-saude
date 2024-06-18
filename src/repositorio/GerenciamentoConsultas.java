@@ -3,6 +3,7 @@ package repositorio;
 import entidades.Consulta;
 import entidades.Nutricionista;
 
+
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -11,24 +12,38 @@ public class GerenciamentoConsultas {
     private static List<Consulta> consultas = new ArrayList<>(); // Certificar que a lista seja tipada corretamente
 
     // Método para listar todas as consultas
-    public static void listar() {
-        for (Consulta consulta : consultas) {
-            System.out.println("Data e Hora: " + consulta.getDataHora() +
-                    ", Nutricionista: " + consulta.getNomeNutricionista() +
-                    ", Paciente: " + consulta.getNomePaciente());
+    public static String listarConsultas() {
+        if (!consultas.isEmpty()) {
+            System.out.println("==================== Consultas Agendadas ====================");
+            for (Consulta consulta : consultas) {
+                return consulta.toString();
+            }
         }
+        return "\nNão há Consultas Agendadas";
     }
 
     // Método para buscar uma consulta por ID (posição na lista)
-    public static Consulta buscarPorId(int id) {
-        if (id >= 0 && id < consultas.size()) {
-            return consultas.get(id);
+    public static Consulta buscarConsultaPorId(int id) {
+            for (Consulta consulta : consultas) {
+                if (consulta.getIdConsulta() == id) {
+                    return consulta;
+                }
+            }
+            return null;
+    }
+
+    public static void realizarConsulta(int id){
+        Consulta consulta = buscarConsultaPorId(id);
+        if (consulta == null){
+            System.out.println("\nConsulta não encontrada!");
+            return;
         }
-        return null;
+        consulta.setConsultaRealizada(true);
+        System.out.println("\nConsulta Realizada!");
     }
 
     // Método para adicionar uma consulta
-    public static void adicionar(Consulta consulta) {
+    public static void adicionarConsulta(Consulta consulta) {
         consultas.add(consulta);
         // Incrementar o número de consultas do nutricionista
         Nutricionista nutricionista = GerenciamentoNutricionistas.buscarNutricionistaPorNome(consulta.getNomeNutricionista());
@@ -37,8 +52,8 @@ public class GerenciamentoConsultas {
         }
     }
 
-    // Método para remover uma consulta por ID (posição na lista)
-    public static boolean remover(int id) {
+    // Método para remover uma consulta por ID
+    public static boolean removerConsulta(int id) {
         if (id >= 0 && id < consultas.size()) {
             consultas.remove(id);
             return true;
@@ -47,8 +62,8 @@ public class GerenciamentoConsultas {
     }
 
     // Método para alterar uma consulta por ID (posição na lista)
-    public static boolean alterar(int id, LocalDateTime novaDataHora, String novoNomeNutricionista, String novoNomePaciente, boolean novaConsultaRealizada) {
-        Consulta consulta = buscarPorId(id);
+    public static boolean alterarConsulta(int id, LocalDateTime novaDataHora, String novoNomeNutricionista, String novoNomePaciente, boolean novaConsultaRealizada) {
+        Consulta consulta = buscarConsultaPorId(id);
         if (consulta != null) {
             consulta.setDataHora(novaDataHora);
             consulta.setNomeNutricionista(novoNomeNutricionista);

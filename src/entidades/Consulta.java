@@ -3,6 +3,8 @@ package entidades;
 import java.time.LocalDateTime;
 
 public class Consulta {
+    private static int contadorId = 1; // ID inicial
+    private int idConsulta;
     private String nomeNutricionista;
     private String nomePaciente;
     private LocalDateTime dataHora;
@@ -11,6 +13,7 @@ public class Consulta {
     // Construtors
     public Consulta(){}
     public Consulta(String nomeNutricionista, String nomePaciente, LocalDateTime dataHora, boolean consultaRealizada) {
+        this.idConsulta = contadorId++;
         this.nomeNutricionista = nomeNutricionista;
         this.nomePaciente = nomePaciente;
         this.dataHora = dataHora;
@@ -18,6 +21,14 @@ public class Consulta {
     }
 
     // Getters e Setters
+    public int getIdConsulta() {
+        return idConsulta;
+    }
+
+    public void setIdConsulta(int idConsulta) {
+        this.idConsulta = idConsulta;
+    }
+
     public String getNomeNutricionista() {
         return nomeNutricionista;
     }
@@ -42,17 +53,22 @@ public class Consulta {
         this.dataHora = dataHora;
     }
 
-    public boolean isConsultaRealizada() {
+    public boolean getConsultaRealizada() {
         return consultaRealizada;
     }
 
-    public void setConsultaRealizada(boolean consultaRealizada) {
-        this.consultaRealizada = consultaRealizada;
+    public void setConsultaRealizada(boolean consulta) {
+        this.consultaRealizada = consulta;
     }
 
     // Método para retornar uma string com as informações da consulta
     @Override
     public String toString() {
-        return "entidades.Consulta: Nutricionista = " + nomeNutricionista + ", Paciente = " + nomePaciente + ", Data e Hora = " + dataHora + ", entidades.Consulta Realizada = " + consultaRealizada;
+        String stringConsultaRealizada = consultaRealizada ? "Sim" : "Não";
+        return "Consulta: " + getIdConsulta() +
+                ", Nutricionista = " + getNomeNutricionista() +
+                ", Paciente = " + getNomePaciente() +
+                ", Data e Hora = " + getDataHora() +
+                ", Consulta Realizada = " + stringConsultaRealizada;
     }
 }

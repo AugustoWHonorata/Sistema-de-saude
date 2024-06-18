@@ -1,7 +1,8 @@
 package entidades;
 
 public class Funcionario {
-    private int id;
+    private static int contadorId = 1;
+    private int idFuncionario;
     private String nome;
     private int idade;
     private Endereco endereco;
@@ -10,8 +11,8 @@ public class Funcionario {
     // Construtors
     public Funcionario(){}
 
-    public Funcionario(int id, String nome, int idade, Endereco endereco, double salario) {
-        this.id = id;
+    public Funcionario(String nome, int idade, Endereco endereco, double salario) {
+        this.idFuncionario = contadorId++;
         this.nome = nome;
         this.idade = idade;
         this.endereco = endereco;
@@ -20,11 +21,11 @@ public class Funcionario {
 
     // Getters e Setters
     public int getId() {
-        return id;
+        return idFuncionario;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setId(int idFuncionario) {
+        this.idFuncionario = idFuncionario;
     }
     public String getNome() {
         return nome;
@@ -61,6 +62,10 @@ public class Funcionario {
     // Método para retornar uma string com as informações do funcionário
     @Override
     public String toString() {
-        return "Funcionário: " + nome + ", Idade: " + idade + ", Salário: " + salario + ", " + endereco.toString();
+        return "\nFuncionário: " + getId() +
+                "\nNome: " + getNome() + "," +
+                "\nIdade: " + getIdade() + "," +
+                "\nSalário: " + getSalario() + ",\n" +
+                getEndereco().toString();
     }
 }

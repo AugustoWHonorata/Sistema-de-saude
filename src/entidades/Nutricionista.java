@@ -11,12 +11,9 @@ public class Nutricionista extends Funcionario {
 
     // Construtors
     public Nutricionista(){ }
-    public Nutricionista(int id, String nome, int idade, Endereco endereco, double salario, List<String> certificacoes, int numeroConsultas, int tempoExperiencia) {
-        super(id, nome, idade, endereco, salario);
+    public Nutricionista(String nome, int idade, Endereco endereco, double salario, List<String> certificacoes, int numeroConsultas, int tempoExperiencia) {
+        super(nome, idade, endereco, salario);
 
-        if (GerenciamentoNutricionistas.listarNutricionistas().contains(this)) {
-            throw new IllegalArgumentException("O nutricionista já existe.");
-        }
         this.certificacoes = certificacoes != null ? new ArrayList<>(certificacoes) : new ArrayList<>();
         this.numeroConsultas = numeroConsultas;
         this.tempoExperiencia = tempoExperiencia;
@@ -63,8 +60,14 @@ public class Nutricionista extends Funcionario {
 
     @Override
     public String toString() {
-        return "Nutricionista: " + getNome() + ", Idade: " + getIdade() + ", Salário: " + getSalario() + ", " + getEndereco().toString()
-                + ", Certificações: " + certificacoes + ", Número de Consultas: " + numeroConsultas + ", Tempo de Experiência: " + tempoExperiencia + " anos";
+        return "Nutricionista: " + getId() +
+                "\nNome: "+ getNome() +
+                "\nIdade: " + getIdade() +
+                "\nSalário: " + getSalario() +
+                "\n" + getEndereco().toString() +
+                 "\nCertificações: " + getCertificacoes() +
+                "\nNúmero de Consultas: " + getNumeroConsultas() +
+                "\nTempo de Experiência: " + getTempoExperiencia() + " anos";
     }
 }
 

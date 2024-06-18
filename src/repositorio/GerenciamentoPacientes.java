@@ -1,5 +1,6 @@
 package repositorio;
 
+import entidades.Funcionario;
 import entidades.Paciente;
 
 import java.util.ArrayList;
@@ -9,28 +10,7 @@ public class GerenciamentoPacientes {
 
     private static List<Paciente> pacientes = new ArrayList<>();
 
-    public static void listar() {
-        if (pacientes == null || pacientes.size() == 0) {
-            System.out.println("\n\nLista de pacientes vazia.\n\n");
-        } else {
-            System.out.println("\nPacientes:");
-            for (Paciente paciente : pacientes) {
-                System.out.printf("%d - %s;\n", paciente.getId(), paciente.getNome());
-            }
-        }
-    }
-
-
-    public static Paciente buscarPorId(int id) {
-        for (Paciente paciente : pacientes) {
-            if (paciente.getId() == id) {
-                return paciente;
-            }
-        }
-        return null;
-    }
-
-    public static void adicionar(Paciente paciente) {
+    public static void adicionarPaciente(Paciente paciente) {
         pacientes.add(paciente);
     }
 
@@ -42,6 +22,35 @@ public class GerenciamentoPacientes {
         }
         return false;
     }
+
+
+    public static String listarPacientes() {
+        if (!pacientes.isEmpty()) {
+            System.out.println("\n==================== Pacientes ====================");
+            for (Paciente paciente : pacientes) {
+                return paciente.toString();
+            }
+        }
+        return "\nNão há Pacientes cadastrados.";
+    }
+
+    public static Paciente buscarPorId(int id) {
+        for (Paciente paciente : pacientes) {
+            if (paciente.getId() == id) {
+                return paciente;
+            }
+        }
+        return null;
+    }
+
+    public static Paciente buscarPacientePorNome(String nome){
+        return  pacientes.stream()
+                .filter(n -> n.getNome().equals(nome))
+                .findFirst()
+                .orElse(null);
+    }
+
+
     public static boolean alterar(int id, double peso, double altura, String pressaoArterial, int frequenciaCardiaca, String dietaAlimentar, List<String> atividadesFisicas) {
         Paciente paciente = buscarPorId(id);
         if (paciente != null) {

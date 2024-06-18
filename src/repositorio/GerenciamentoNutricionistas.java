@@ -6,8 +6,14 @@ import java.util.List;
 public class GerenciamentoNutricionistas {
     private static List<Nutricionista> nutricionistas = new ArrayList<>();
 
-    public static List<Nutricionista> listarNutricionistas() {
-        return new ArrayList<>(nutricionistas);
+    public static String listarNutricionistas() {
+        if (!nutricionistas.isEmpty()) {
+            System.out.println("==================== Nutricionistas ====================");
+            for (Nutricionista nutricionista : nutricionistas) {
+                return nutricionista.toString();
+            }
+        }
+        return "\nNão há Nutricionistas cadastrados";
     }
 
     public static Nutricionista buscarNutricionistaPorId(int id) {
@@ -20,7 +26,7 @@ public class GerenciamentoNutricionistas {
     }
 
     public static Nutricionista buscarNutricionistaPorNome(String nome){
-        return  listarNutricionistas().stream()
+        return  nutricionistas.stream()
                 .filter(n -> n.getNome().equals(nome))
                 .findFirst()
                 .orElse(null);

@@ -4,7 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Paciente {
-    private int id;
+    private static int contadorId = 1;
+    private int idPaciente;
     private String nome;
     private int idade;
     private double peso;
@@ -14,12 +15,11 @@ public class Paciente {
     private String dietaAlimentar;
     private List<String> atividadesFisicas;
 
+    //Constructors
     public Paciente(){
-
     }
-
-    public Paciente(int id, String nome, int idade, double peso, double altura, String pressaoArterial, int frequenciaCardiaca, String dietaAlimentar, List<String> atividadesFisicas) {
-        this.id = id;
+    public Paciente( String nome, int idade, double peso, double altura, String pressaoArterial, int frequenciaCardiaca, String dietaAlimentar, List<String> atividadesFisicas) {
+        this.idPaciente = contadorId++;
         this.nome = nome;
         this.idade = idade;
         this.peso = peso;
@@ -31,13 +31,12 @@ public class Paciente {
     }
 
     // Getters e setters
-
     public int getId() {
-        return id;
+        return idPaciente;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setId(int idPaciente) {
+        this.idPaciente = idPaciente;
     }
 
     public String getNome() {
@@ -120,17 +119,15 @@ public class Paciente {
     }
     @Override
     public String toString() {
-        return "\n\nentidades.Paciente{" +
-                "id=" + id +
-                ", nome='" + nome + '\'' +
-                ", idade=" + idade +
-                ", peso=" + peso +
-                ", altura=" + altura +
-                ", Pressao Arterial='" + pressaoArterial + '\'' +
-                ", Frequencia Cardiaca=" + frequenciaCardiaca +
-                ", Dieta Alimentar='" + dietaAlimentar + '\'' +
-                ", Atividades Fisicas=" + atividadesFisicas +
-                ", IMC=" + calcularIMC() +
-                '}';
+        return "\n\nPaciente " + idPaciente + "," +
+                "\nNome: " + nome + "," +
+                "\nIdade: " + idade + "," +
+                "\nPeso: " + peso + "," +
+                "\nAltura: " + altura + "," +
+                "\nPressao Arterial: " + pressaoArterial  + "," +
+                "\nFrequencia Cardiaca: " + frequenciaCardiaca + "," +
+                "\nDieta Alimentar: " + dietaAlimentar + "," +
+                "\nAtividades Fisicas: " + atividadesFisicas + "," +
+                "\nIMC: " + calcularIMC();
     }
 }

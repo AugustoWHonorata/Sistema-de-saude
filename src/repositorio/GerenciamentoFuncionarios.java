@@ -7,8 +7,14 @@ import entidades.Funcionario;
 public class GerenciamentoFuncionarios {
     private static List<Funcionario> funcionarios = new ArrayList<>();
 
-    public static List<Funcionario> listarFuncionario() {
-        return new ArrayList<>(funcionarios);
+    public static String listarFuncionarios() {
+        if (!funcionarios.isEmpty()) {
+            System.out.println("==================== Funcionários ====================");
+            for (Funcionario funcionario : funcionarios) {
+                return funcionario.toString();
+            }
+        }
+        return "\nNão há Funcionários Cadastrados";
     }
 
     public static Funcionario buscarFuncionarioPorId(int id) {
