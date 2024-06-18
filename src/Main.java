@@ -49,6 +49,7 @@ public class Main {
                     break;
                 case 10:
                     listarFuncionarios();
+                    break;
                 case 11:
                     listarConsultas();
                     break;
@@ -391,6 +392,7 @@ public class Main {
     private static void listarConsultas() {
         System.out.println(GerenciamentoConsultas.listarConsultas());
     }
+
 
     private static void realizarConsulta() {
         System.out.println("\nRealizar Consulta");
